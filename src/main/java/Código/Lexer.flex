@@ -10,12 +10,39 @@ espacio=[ ,\t,\r,\n]+
     public String lexeme;
 %}
 %%
-int |
 mold |
+public |
+inamov |
 dat |
+private |
+bool |
+int |
+func |
+main |
+while |
 if |
 else |
-while {lexeme=yytext(); return Reservadas;}
+loop |
+simb |
+float |
+double |
+long |
+BEGIN |
+END |
+jump |
+package |
+collect |
+diction |
+parallel |
+attempt |
+panic |
+explosion |
+inherit |
+create |
+wait |
+padlock |
+link |
+share {lexeme=yytext(); return Reservadas;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
 "=" {return Igual;}
