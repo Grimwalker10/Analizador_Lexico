@@ -45,6 +45,9 @@ link |
 share {lexeme=yytext(); return Reservadas;}
 {espacio} {/*Ignore*/}
 "//".* {/*Ignore*/}
+"(" | ")" | "{" | "}" | ";" | "," | "." | "@" {return Separador;}
+":" | "<" | "<=" | ">" | ">=" | "like" | "notlike" | "&&" | "||" | "¡" {return Operador;}
+"true" | "false" {return Booleano;}
 "=" {return Igual;}
 "+" {return Suma;}
 "-" {return Resta;}
