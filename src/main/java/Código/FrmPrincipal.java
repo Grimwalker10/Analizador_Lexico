@@ -9,17 +9,55 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ *
+ * @author sammy
+ */
 public class FrmPrincipal extends javax.swing.JFrame {
+
+    private Image Documentos;
 
     /**
      * Creates new form FrmPrincipal
      */
     public FrmPrincipal() {
+
+        PanelConMarcaAgua fondoPanel = new PanelConMarcaAgua();
+        fondoPanel.add(getContentPane());
+        setContentPane(fondoPanel);
+
         initComponents();
         this.setLocationRelativeTo(null);
+
+        Image icono = java.awt.Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/logo.png"));
+        this.setIconImage(icono);
+
+        getContentPane().setBackground(new java.awt.Color(220, 230, 250));
+        btnAnalizar.setBackground(new java.awt.Color(0, 46, 93)); // azul profundo
+        btnAnalizar.setForeground(Color.WHITE); // texto blanco
+
+        jButton2.setBackground(new java.awt.Color(0, 216, 255)); // cian suave
+        jButton2.setForeground(new java.awt.Color(0, 46, 93));   // azul texto
+
+        jLabel1.setBackground(new java.awt.Color(0, 255, 145));
+
+        Color azulOscuro = new Color(0, 46, 93);
+        Color azulHover  = new Color(0, 88, 163);
+
+        Color cianNormal = new Color(0, 216, 255);
+        Color cianHover  = new Color(0, 255, 255);
+
+        btnAnalizar.setForeground(Color.WHITE);
+        aplicarHover(btnAnalizar, azulOscuro, azulHover);
+
+        jButton1.setForeground(azulOscuro);
+        aplicarHover(jButton1, cianNormal, cianHover);
+
+        jButton2.setForeground(azulOscuro);
+        aplicarHover(jButton2, cianNormal, cianHover);
     }
 
     /**
@@ -29,27 +67,74 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        txtEntrada = new javax.swing.JTextField();
-        // Variables declaration - do not modify
-        JButton btnAnalizar = new JButton();
+
+        btnAnalizar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        JLabel jLabel2 = new JLabel();
+        jButton1 = new javax.swing.JButton();
+        JLabel jLabel3 = new JLabel();
+        jButton2 = new javax.swing.JButton();
         JScrollPane jScrollPane1 = new JScrollPane();
+        txtEntrada = new javax.swing.JTextArea();
+        JScrollPane jScrollPane2 = new JScrollPane();
+        JTextArea jTextArea1 = new JTextArea();
+        JLabel jLabel4 = new JLabel();
+        JScrollPane jScrollPane3 = new JScrollPane();
         txtResultado = new javax.swing.JTextArea();
-        JLabel lblNombre = new JLabel("Nombre: Diego José Lutín Miranda");
-        JLabel lblCarnet = new JLabel("Carnet: 5190-20-16218");
-        JLabel lblCurso = new JLabel("Curso: Compiladores");
-        JLabel lblSeccion = new JLabel("Sección: C");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 102, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtEntrada.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 24)); // NOI18N
-
-        btnAnalizar.setFont(new java.awt.Font("Tahoma", Font.PLAIN, 24)); // NOI18N
-        btnAnalizar.setText("Analizar");
+        btnAnalizar.setFont(new java.awt.Font("Yu Gothic", Font.BOLD, 14)); // NOI18N
+        btnAnalizar.setText("Analizador Lexico");
+        btnAnalizar.setToolTipText("");
+        btnAnalizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAnalizar.addActionListener(this::btnAnalizarActionPerformed);
+
+        jLabel1.setBackground(getBackground());
+        jLabel1.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Analizador Lexico");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
+        jLabel2.setText("Ingrese el codigo:");
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic", Font.BOLD, 14)); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 12)); // NOI18N
+        jLabel3.setText("Resultado de compilacion:");
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic", Font.BOLD, 14)); // NOI18N
+        jButton2.setText("Limpiar Pantalla");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPreferredSize(new java.awt.Dimension(124, 22));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        txtEntrada.setColumns(20);
+        txtEntrada.setRows(5);
+        jScrollPane1.setViewportView(txtEntrada);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 8)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setText("              Grupo Compiladores\n                    Integrantes:\nSamuel Sagastume\nDiego Lutim\nEsteban Valencia\n");
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/Imagenes/Logo.png")))); // NOI18N
 
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
-        jScrollPane1.setViewportView(txtResultado);
+        txtResultado.setPreferredSize(new java.awt.Dimension(212, 84));
+        jScrollPane3.setViewportView(txtResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,86 +143,173 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)))
-                                .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(lblNombre)
-                                .addGap(20, 20, 20)
-                                .addComponent(lblCarnet)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(lblCurso)
-                                .addGap(20, 20, 20)
-                                .addComponent(lblSeccion)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jScrollPane3)
+                                                        .addComponent(jScrollPane1)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(12, 12, 12)
+                                                                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(86, 86, 86))))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addContainerGap())
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(jLabel4)
+                                                                .addGap(212, 212, 212))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(jLabel1)
+                                                                .addGap(202, 202, 202))))))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAnalizar))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblNombre)
-                                        .addComponent(lblCarnet))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblCurso)
-                                        .addComponent(lblSeccion))
-                                .addGap(10, 10, 10))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel2))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel1)
+                                                .addGap(0, 17, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(btnAnalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton1))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addContainerGap())
         );
-        pack();
-    }
 
-    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
+        pack();
+    }// </editor-fold>
+
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {
+        // Verificación 4: Error si no ha ingresado un programa fuente
+        if (txtEntrada.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Error: No ha ingresado un programa fuente",
+                    "Error de análisis",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         File archivo = new File("archivo.txt");
-        PrintWriter escribir;
-        try {
-            escribir = new PrintWriter(archivo);
-            escribir.print(txtEntrada.getText());
-            escribir.close();
+
+        // Verificación 2: Archivo No Existe (aunque lo crearemos, verificamos si podemos)
+        if (!archivo.exists()) {
+            try {
+                archivo.createNewFile();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Error: No se pudo crear el archivo temporal",
+                        "Error de sistema",
+                        JOptionPane.ERROR_MESSAGE);
+                Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                return;
+            }
+        }
+
+        // Verificación 3: Archivo Sin Información (aunque lo escribiremos)
+        try (PrintWriter escribir = new PrintWriter(archivo)) {
+            String contenido = txtEntrada.getText();
+            if (contenido.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Error: Archivo sin información",
+                        "Error de análisis",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            escribir.print(contenido);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         }
-        
-        try {
-            Reader lector = new BufferedReader(new FileReader("archivo.txt"));
+
+        // Análisis léxico
+        try (Reader lector = new BufferedReader(new FileReader(archivo))) {
             Lexer lexer = new Lexer(lector);
             StringBuilder resultado = new StringBuilder();
+            boolean hasError = false;
+
             while (true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
-                    resultado.append("FIN");
+                    if (!hasError) {
+                        resultado.append("Análisis completado sin errores");
+                    }
                     txtResultado.setText(resultado.toString());
                     return;
                 }
+
                 switch (tokens) {
                     case ERROR:
-                        resultado.append("Simbolo no definido\n");
+                        // Verificación 1: Símbolo No Definido
+                        resultado.append("Error: Símbolo no definido -> '")
+                                .append(lexer.lexeme)
+                                .append("'\n");
+                        hasError = true;
                         break;
-                    case Identificador: case Numero: case Reservadas:
-                        resultado.append(lexer.lexeme).append(": Es un ").append(tokens).append("\n");
+                    case Identificador:
+                    case Numero:
+                    case Reservadas:
+                        resultado.append(lexer.lexeme)
+                                .append(": Es un ")
+                                .append(tokens)
+                                .append("\n");
                         break;
                     default:
-                        resultado.append("Token: ").append(tokens).append("\n");
+                        resultado.append("Token: ")
+                                .append(tokens)
+                                .append("\n");
                         break;
                 }
             }
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this,
+                    "Error: Archivo no encontrado",
+                    "Error de sistema",
+                    JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }                                           
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        txtEntrada.setText("");
+        txtResultado.setText("");
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        System.exit(0);
+    }
 
     /**
      * @param args the command line arguments
@@ -146,7 +318,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -155,10 +327,18 @@ public class FrmPrincipal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                 UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException |
+                 IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrmPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+
+        try {
+            com.formdev.flatlaf.FlatLightLaf.setup();
+            javax.swing.UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Error al aplicar FlatLaf");
+        }
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -169,7 +349,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
     }
 
-    private javax.swing.JTextField txtEntrada;
+    private void aplicarHover(javax.swing.JButton boton, Color colorNormal, Color colorHover) {
+        boton.setBackground(colorNormal);
+        boton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // cambia a "manita"
+
+        boton.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                boton.setBackground(colorHover);
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                boton.setBackground(colorNormal);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify
+    private javax.swing.JButton btnAnalizar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextArea txtEntrada;
     private javax.swing.JTextArea txtResultado;
-    // End of variables declaration                   
+    // End of variables declaration
 }
