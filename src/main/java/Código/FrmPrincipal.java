@@ -12,10 +12,7 @@ import java.io.Reader;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author sammy
- */
+
 public class FrmPrincipal extends javax.swing.JFrame {
 
     private Image Documentos;
@@ -113,11 +110,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setPreferredSize(new java.awt.Dimension(124, 22));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         txtEntrada.setColumns(20);
         txtEntrada.setRows(5);
@@ -126,14 +119,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 8)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("              Grupo Compiladores\n                    Integrantes:\nSamuel Sagastume\nDiego Lutim\nEsteban Valencia\n");
+        jTextArea1.setText("              Grupo Compiladores\n                    Integrantes:\nSamuel Sagastume\nDiego Lutin\nEsteban Valencia\n");
         jScrollPane2.setViewportView(jTextArea1);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/Imagenes/Logo.png")))); // NOI18N
 
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
-        txtResultado.setPreferredSize(new java.awt.Dimension(212, 84));
         jScrollPane3.setViewportView(txtResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,7 +202,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {
         // Verificación 4: Error si no ha ingresado un programa fuente
-        if (txtEntrada.getText().trim().isEmpty()) {
+        if (txtEntrada.getText().isBlank()) {
             JOptionPane.showMessageDialog(this,
                     "Error: No ha ingresado un programa fuente",
                     "Error de análisis",
@@ -261,6 +253,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 if (tokens == null) {
                     if (!hasError) {
                         resultado.append("Análisis completado sin errores");
+                    }else {
+                        resultado.append("Análisis completado con errores");
                     }
                     txtResultado.setText(resultado.toString());
                     return;
@@ -342,11 +336,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmPrincipal().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new FrmPrincipal().setVisible(true));
     }
 
     private void aplicarHover(javax.swing.JButton boton, Color colorNormal, Color colorHover) {

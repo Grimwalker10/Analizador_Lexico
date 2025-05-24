@@ -12,5 +12,6 @@ public enum Tokens {
     Separador,
     Operador,
     Booleano,
+    Texto,
     ERROR;
 }

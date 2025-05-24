@@ -5,14 +5,14 @@ import static Código.Tokens.*;
 %type Tokens
 L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ ,\t,\r,\n]+
+espacio=[\t, \r, \n]+
+texto=\"(\\.|[^\"])*\"
 %{
     public String lexeme;
 %}
 %%
 mold |
 public |
-inamov |
 dat |
 private |
 bool |
@@ -29,18 +29,6 @@ double |
 long |
 BEGIN |
 END |
-jump |
-package |
-collect |
-diction |
-parallel |
-attempt |
-panic |
-explosion |
-inherit |
-create |
-wait |
-padlock |
 link |
 share {lexeme=yytext(); return Reservadas;}
 {espacio} {/*Ignore*/}
@@ -55,4 +43,5 @@ share {lexeme=yytext(); return Reservadas;}
 "/" {return Division;}
 {L}({L}|{D})* {lexeme=yytext(); return Identificador;}
 ("(-"{D}+")")|{D}+ {lexeme=yytext(); return Numero;}
+{texto} { lexeme = yytext(); return Texto; }
  . {return ERROR;}
